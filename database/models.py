@@ -16,7 +16,7 @@ class User(Base):
 	
 	__table_args__ = {'extend_existing': True} 
 
-	def __init__(self, username, password, first, last, img_url=NULL):
+	def __init__(self, username, password, first, last, img_url='null'):
 		self.username = username
 		self.password = password
 		self.first = first
