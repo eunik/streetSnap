@@ -27,8 +27,7 @@ class User(Base):
 			return {'id': self.id, 'username': self.username,
 				'first': self.first, 'last': self.last, 'self.password': self.password}
 		
-		
-		return {str(parameter): str(getattr(self, parameter))}
+		return {parameter: str(getattr(self, parameter))}
 
 	def __repr__(self):
 		return '<User %r>' % (self.id)
@@ -47,8 +46,9 @@ class Post(Base):
 	# extends existing table if it exists
 	__table_args__ = {'extend_existing': True} 
 
-	def __init__(self, user_id, body, lat, lon):
+	def __init__(self, user_id, title = "", body = "", lat, lon):
 		self.user_id = user_id
+		self.title = title
 		self.body = body
 		self.lat = lat
 		self.lon = lon
