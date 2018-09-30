@@ -13,6 +13,8 @@ class User(Base):
 	first = Column(String(50))
 	last = Column(String(50))
 	password= Column(String(12))
+	
+	__table_args__ = {'extend_existing': True} 
 
 	def __init__(self, username, password, first, last):
 		self.username = username
@@ -41,6 +43,9 @@ class Post(Base):
 	pub_date = Column(DateTime, nullable=False, default=datetime.datetime.utcnow)
 	lat = Column(Float(Precision=64))
 	lon = Column(Float(Precision=64))
+	
+	# extends existing table if it exists
+	__table_args__ = {'extend_existing': True} 
 
 	def __init__(self, user_id, body, pub_date, lat, lon):
 		self.user_id = user_id

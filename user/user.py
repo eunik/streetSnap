@@ -19,7 +19,7 @@ def create_user(username, password, first, last):
 def get_user_info(id, key):
 	u = db_session.query(User).get(id)
 	value = getattr(u, key)
-	return {'id': 'id', str(key): value}
+	return {'id': str(id), key: str(value)}
 	
 def remove_user(id):
 	User.query.filter_by(id=id).delete()
