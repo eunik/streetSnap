@@ -30,7 +30,8 @@ def get_user(id):
 def remove_user(id):
 	User.query.filter_by(id=id).delete()
 	
-# print(create_user('dax3ddsdddd', 'a', 'a', 'a'))
+#print(create_user('a', 'a', 'Jack', 'Sparow', 'http://i376.photobucket.com/albums/oo208/vldesai/Picture001.jpg'))
+#print(create_user('b', 'b', 'Macho', 'Man', 'http://i793.photobucket.com/albums/yy212/mrsexxy2010/Picture0136.jpg'))
 #print(get_user(1))
 #print(get_user_info('1','username'))
 #remove_user(7)

@@ -42,18 +42,18 @@ class Post(Base):
 	pub_date = Column(DateTime, nullable=False, default=datetime.datetime.utcnow)
 	lat = Column(Float(Precision=64))
 	lon = Column(Float(Precision=64))
-	artist_name = Column(String(30))
+	artist = Column(String(30))
 	img_url = Column(String(256))
 	
 	# extends existing table if it exists
 	__table_args__ = {'extend_existing': True} 
 
-	def __init__(self, user_id, lat, lon, artist_name, body = "", img_url="null"):
+	def __init__(self, user_id, lat, lon, artist, body = "", img_url="null"):
 		self.user_id = user_id
 		self.body = body
 		self.lat = lat
 		self.lon = lon
-		self.artist_name = artist_name
+		self.artist = artist
 		self.img_url = img_url
 		
 	def __repr__(self):

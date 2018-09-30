@@ -40,7 +40,7 @@ def create_new_post():
 	This function creates a new post
 	"""
 	input = request.get_json()
-	return (jsonify(post.create_post(input["user_id"], input["lat"], input["lon"], input["body"], input["img_url"])), 200)
+	return (jsonify(post.create_post(input["user_id"], input["lat"], input["lon"], input["body"], input["artist"], input["img_url"])), 200)
 
 # http://127.0.0.1:5000/post/get/locs/
 @app.route('/post/get/locs/', methods=['GET'])
