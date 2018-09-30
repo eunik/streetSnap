@@ -1,9 +1,7 @@
-import os
-from flask import Flask
+from flask import Flask, jsonify, request
 import streetSnap.database.models as models
 import user.user as user
 import datetime
-from flask import Flask, jsonify, request
 time_compiled = datetime.datetime.now()
 
 app = Flask(__name__)
