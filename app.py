@@ -1,7 +1,7 @@
 from flask import Flask, jsonify, request
 import database.models as models
 import user.user as user
-import user.follower as follower
+import user.follow as follow
 import post.post as post
 import datetime
 time_compiled = datetime.datetime.now()
@@ -65,7 +65,7 @@ def create_new_follow():
 	This function creates a new post
 	"""
 	input = request.get_json()
-	return (jsonify(post.create_post(input["from_id"], input["to_id"])), 200)
+	return (jsonify(follow.create_follow(input["from_id"], input["to_id"])), 200)
 	
 	
 if __name__ == '__main__':

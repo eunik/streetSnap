@@ -4,7 +4,7 @@ sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 from database.database import Base, db_session
 from database.models import Follow
 
-def follow(from_id, to_id):
+def create_follow(from_id, to_id):
 	# assume my_id and friend_id are valid
 	u = Follow(from_id, to_id)
 	db_session.add(u)
