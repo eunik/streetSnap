@@ -9,9 +9,12 @@ def create_user(username, password, first, last):
 	if len(password) > 16:
 		return {'success': 0, 'id': 'null', 'msg': 'password is too long, make less than 16'}
 	u = User(username, password, first, last)
+	
+	# make sure it is not duplicate
 	if db_session.query(User).filter(User.username == username).first():
 		return {'success': 0, 'id': 'null', 'msg': 'user already exist'}
 	db_session.add(u)
+	# make sure we update our database is updated with the id
 	db_session.flush()
 	db_session.commit()
 	return {'success': 1, 'id': u.id, 'msg': 'success'}

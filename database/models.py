@@ -47,14 +47,29 @@ class Post(Base):
 	# extends existing table if it exists
 	__table_args__ = {'extend_existing': True} 
 
-	def __init__(self, user_id, body, pub_date, lat, lon):
+	def __init__(self, user_id, body, lat, lon):
 		self.user_id = user_id
 		self.body = body
-		self.pub_date = pub_date
 		self.lat = lat
 		self.lon = lon
-
+		
 	def __repr__(self):
 		return '<Post %r>' % (self.id)
+		
+class Follow(Base):
+	__tablename__ = 'follows'
+	from_id = Column(Integer, primary_key=True)
+	to_id = Column(Integer, primary_key=True)
+
+	# extends existing table if it exists
+	__table_args__ = {'extend_existing': True} 
+	
+	def __init__(self, from_id, to_id):
+		self.from_id = from_id
+		self.to_id = to_id
+
+	def __repr__(self):
+		return '<Follow %r%r>' % (self.from_id, self.to_id)
+
 		
 		
