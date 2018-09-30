@@ -4,9 +4,7 @@ import user.user as user
 import datetime
 time_compiled = datetime.datetime.now()
 
-#import os
 app = Flask(__name__)
-#app.config.from_object(os.environ['APP_SETTINGS'])
 
 # test_run: https://
 @app.route('/')
