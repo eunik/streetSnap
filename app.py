@@ -40,15 +40,15 @@ def create_new_post():
 	This function creates a new post
 	"""
 	input = request.get_json()
-	return (jsonify(user.create_post(input["user_id"], input["lat"], input["lon"], input["body"])), 200)
+	return (jsonify(post.create_post(input["user_id"], input["lat"], input["lon"], input["body"])), 200)
 
-# http://127.0.0.1:5000/user/get/id/1/key/username
+# http://127.0.0.1:5000/post/get/locs/
 @app.route('/post/get/locs/', methods=['GET'])
 def grab_locs():
 	"""
 	This function will get information from a user
 	"""
-	return (jsonify(user.get_locs()), 200)
+	return (jsonify(post.get_locs()), 200)
 	
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
