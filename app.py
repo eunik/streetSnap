@@ -24,7 +24,7 @@ def create_new_user():
 	This function creates a new user
 	"""
 	input = request.get_json()
-	return (jsonify(user.create_user(input["username"], input["password"], input["first"], input["last"])), 200)
+	return (jsonify(user.create_user(input["username"], input["password"], input["first"], input["last"], input["img_url"])), 200)
 
 # http://127.0.0.1:5000/user/get/id/1/key/username
 @app.route('/user/get/id/<int:id>/key/<string:key>', methods=['GET'])
@@ -40,7 +40,7 @@ def create_new_post():
 	This function creates a new post
 	"""
 	input = request.get_json()
-	return (jsonify(post.create_post(input["user_id"], input["lat"], input["lon"], input["body"])), 200)
+	return (jsonify(post.create_post(input["user_id"], input["lat"], input["lon"], input["body"], input["img_url"])), 200)
 
 # http://127.0.0.1:5000/post/get/locs/
 @app.route('/post/get/locs/', methods=['GET'])

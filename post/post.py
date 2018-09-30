@@ -4,8 +4,8 @@ sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 from database.database import Base, db_session
 from database.models import Post
 
-def create_post(user_id, lat, lon, body):
-	p = Post(user_id, lat, lon, body)
+def create_post(user_id, lat, lon, body, img_url=NULL):
+	p = Post(user_id, lat, lon, body, img_url)
 	db_session.add(p)
 	# make sure we update our database is updated with the id
 	db_session.flush()
@@ -14,8 +14,8 @@ def create_post(user_id, lat, lon, body):
 
 def get_posts():
 	json = []
-	for post in db_session.query(Post.id, Post.user_id, Post.body, Post.pub_date):
-		json.append({'id' : post.id, 'user_id' : post.user_id, 'body' : post.body, 'pub_date' : post.pub_date})
+	for post in db_session.query(Post.id, Post.user_id, Post.body, Post.pub_date, Post.img_url):
+		json.append({'id' : post.id, 'user_id' : post.user_id, 'body' : post.body, 'pub_date' : post.pub_date, 'img_url' : post.img_url})
 	return {'success': 1, 'locs':json , 'msg': 'success'}
 		
 def get_locs():

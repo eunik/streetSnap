@@ -12,19 +12,21 @@ class User(Base):
 	first = Column(String(50))
 	last = Column(String(50))
 	password= Column(String(12))
+	img_url = Column(String(256))
 	
 	__table_args__ = {'extend_existing': True} 
 
-	def __init__(self, username, password, first, last):
+	def __init__(self, username, password, first, last, img_url=NULL):
 		self.username = username
 		self.password = password
 		self.first = first
 		self.last = last
+		self.img_url = img_url
 	
 	def get_item(self, parameter):
 		if parameter == 'all':
 			return {'id': self.id, 'username': self.username,
-				'first': self.first, 'last': self.last, 'self.password': self.password}
+				'first': self.first, 'last': self.last, 'self.password': self.password, 'self.img_url': self.img_url}
 		
 		return {parameter: str(getattr(self, parameter))}
 
@@ -41,16 +43,18 @@ class Post(Base):
 	lat = Column(Float(Precision=64))
 	lon = Column(Float(Precision=64))
 	artist_name = Column(String(30))
+	img_url = Column(String(256))
 	
 	# extends existing table if it exists
 	__table_args__ = {'extend_existing': True} 
 
-	def __init__(self, user_id, lat, lon, artist_name, body = ""):
+	def __init__(self, user_id, lat, lon, artist_name, body = "", img_url=NULL):
 		self.user_id = user_id
 		self.body = body
 		self.lat = lat
 		self.lon = lon
 		self.artist_name = artist_name
+		self.img_url = img_url
 		
 	def __repr__(self):
 		return '<Post %r>' % (self.id)

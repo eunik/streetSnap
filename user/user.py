@@ -4,10 +4,10 @@ sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 from database.database import Base, db_session
 from database.models import User
 
-def create_user(username, password, first, last):
+def create_user(username, password, first, last, img_url=NULL):
 	if len(password) > 16:
 		return {'success': 0, 'id': 'null', 'msg': 'password is too long, make less than 16'}
-	u = User(username, password, first, last)
+	u = User(username, password, first, last, img_url)
 	
 	# make sure it is not duplicate
 	if db_session.query(User).filter(User.username == username).first():
@@ -25,7 +25,7 @@ def get_user_info(id, key):
 	
 def get_user(id):
 	u = db_session.query(User).get(id)
-	return {'id': str(u.id), 'username': str(u.username), 'name': '{} {}'.format(u.first, u.last)}
+	return {'id': str(u.id), 'username': str(u.username), 'name': '{} {}'.format(u.first, u.last), 'img_url': str(u.img_url)}
 	
 def remove_user(id):
 	User.query.filter_by(id=id).delete()
