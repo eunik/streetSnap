@@ -4,7 +4,7 @@ sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 from database.database import Base, db_session
 from database.models import User
 
-def create_user(username, password, first, last, img_url=NULL):
+def create_user(username, password, first, last, img_url="null"):
 	if len(password) > 16:
 		return {'success': 0, 'id': 'null', 'msg': 'password is too long, make less than 16'}
 	u = User(username, password, first, last, img_url)

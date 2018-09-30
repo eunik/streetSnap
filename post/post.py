@@ -4,7 +4,7 @@ sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 from database.database import Base, db_session
 from database.models import Post
 
-def create_post(user_id, lat, lon, body, img_url=NULL):
+def create_post(user_id, lat, lon, body, img_url="null"):
 	p = Post(user_id, lat, lon, body, img_url)
 	db_session.add(p)
 	# make sure we update our database is updated with the id
