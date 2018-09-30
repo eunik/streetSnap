@@ -33,4 +33,4 @@ def grab_user_info(id, key):
 	return (jsonify(user.get_user_info(id, key)), 200)
 	
 if __name__ == '__main__':
-    app.run()
+    app.run(host='0.0.0.0', port=5000)
