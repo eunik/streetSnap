@@ -1,5 +1,5 @@
 from flask import Flask, jsonify, request
-import streetSnap.database.models as models
+import database.models as models
 import user.user as user
 import datetime
 time_compiled = datetime.datetime.now()
