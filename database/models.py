@@ -48,7 +48,7 @@ class Post(Base):
 	# extends existing table if it exists
 	__table_args__ = {'extend_existing': True} 
 
-	def __init__(self, user_id, lat, lon, artist_name, body = "", img_url=NULL):
+	def __init__(self, user_id, lat, lon, artist_name, body = "", img_url="null"):
 		self.user_id = user_id
 		self.body = body
 		self.lat = lat
