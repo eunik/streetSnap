@@ -37,7 +37,6 @@ class Post(Base):
 	__tablename__ = 'posts'
 	id = Column(Integer, primary_key=True)
 	user_id = Column(Integer)
-	title = Column(String(80), nullable=False)
 	body = Column(Text, nullable=False)
 	pub_date = Column(DateTime, nullable=False, default=datetime.datetime.utcnow)
 	lat = Column(Float(Precision=64))
@@ -46,9 +45,8 @@ class Post(Base):
 	# extends existing table if it exists
 	__table_args__ = {'extend_existing': True} 
 
-	def __init__(self, user_id, title = "", body = "", lat, lon):
+	def __init__(self, user_id, lat, lon, body = ""):
 		self.user_id = user_id
-		self.title = title
 		self.body = body
 		self.lat = lat
 		self.lon = lon
