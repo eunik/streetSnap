@@ -10,11 +10,7 @@ def get_locs():
 	print (locs)
 	#return {'success': 1, 'id': u.id, 'msg': 'success'}
 
-get_locs()
-	
-#print(create_user('dax3ddsdddd', 'a', 'a', 'a'))
-#print(get_user_info('1','username'))
-#remove_user(7)
+#get_locs()
 
 def create_post(user_id, lat, lon, body):
 	p = Post(user_id, lat, lon, body)
@@ -29,5 +25,5 @@ def displayPosts():
     for post in db_session.query(Post.id):
         print(Post.id)
 
-print(create_post(788, 107.87, 376.9789785, ' the body'))
-displayPosts()
+#print(create_post(788, 107.87, 376.9789785, ' the body'))
+#displayPosts()
