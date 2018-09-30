@@ -3,7 +3,8 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 
-engine = create_engine('postgresql+psycopg2://postgres:postgre@localhost:5432/streetSnap')
+#engine = create_engine('postgresql+psycopg2://postgres:postgre@localhost:5432/streetSnap')
+engine = create_engine('postgresql+psycopg2://postgres:streetart@35.224.228.122:5432/', echo=True)
 db_session = scoped_session(sessionmaker(autocommit=False,
 										 autoflush=False,
 										 bind=engine))
