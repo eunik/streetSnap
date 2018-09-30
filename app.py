@@ -46,9 +46,27 @@ def create_new_post():
 @app.route('/post/get/locs/', methods=['GET'])
 def grab_locs():
 	"""
-	This function will get information from a user
+	This function will get information from a post
 	"""
 	return (jsonify(post.get_locs()), 200)
+	
+
+# http://127.0.0.1:5000/post/get/post/
+@app.route('/post/get/post/', methods=['GET'])
+def grab_post():
+	"""
+	This function will get information from a post
+	"""
+	return (jsonify(post.get_posts()), 200)
+	
+@app.route('/post/create-follow', methods=['POST'])
+def create_new_follow():
+	"""
+	This function creates a new post
+	"""
+	input = request.get_json()
+	return (jsonify(post.create_post(input["from_id"], input["to_id"])), 200)
+	
 	
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)

@@ -6,14 +6,13 @@ from database.models import Post
 
 def create_post(user_id, lat, lon, body):
 	p = Post(user_id, lat, lon, body)
-
 	db_session.add(p)
 	# make sure we update our database is updated with the id
 	db_session.flush()
 	db_session.commit()
 	return {'success': 1, 'id': p.id, 'msg': 'success'}
 
-def displayPosts():
+def get_posts():
 	json = []
 	for post in db_session.query(Post.id, Post.user_id, Post.body, Post.pub_date):
 		json.append({'id' : post.id, 'user_id' : post.user_id, 'body' : post.body, 'pub_date' : post.pub_date})

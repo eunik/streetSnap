@@ -56,7 +56,7 @@ class Post(Base):
 		return '<Post %r>' % (self.id)
 		
 class Follow(Base):
-	__tablename__ = 'follows'
+	__tablename__ = 'follow'
 	from_id = Column(Integer, primary_key=True)
 	to_id = Column(Integer, primary_key=True)
 

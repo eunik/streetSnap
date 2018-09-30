@@ -23,9 +23,14 @@ def get_user_info(id, key):
 	value = getattr(u, key)
 	return {'id': str(id), key: str(value)}
 	
+def get_user(id):
+	u = db_session.query(User).get(id)
+	return {'id': str(u.id), 'username': str(u.username), 'name': '{} {}'.format(u.first, u.last)}
+	
 def remove_user(id):
 	User.query.filter_by(id=id).delete()
 	
-#print(create_user('dax3ddsdddd', 'a', 'a', 'a'))
+# print(create_user('dax3ddsdddd', 'a', 'a', 'a'))
+#print(get_user(1))
 #print(get_user_info('1','username'))
 #remove_user(7)
