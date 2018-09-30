@@ -2,8 +2,8 @@ import sys
 import os
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 from sqlalchemy import Column, Integer, String, Float, Date, Text, DateTime
-from database import Base
-from database import db_session
+from database.database import Base
+from database.database import db_session
 import datetime
 
 class User(Base):
