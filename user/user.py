@@ -1,8 +1,7 @@
 import sys
 import os
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
-from database.database import Base
-from database.database import db_session
+from database.database import Base, db_session
 from database.models import User
 
 def create_user(username, password, first, last):

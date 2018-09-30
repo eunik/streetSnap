@@ -1,16 +1,8 @@
 import sys
 import os
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
-from database.database import Base
-from database.database import db_session
+from database.database import Base, db_session
 from database.models import Post
-
-def get_locs():
-	locs = [[post.lat, post.lon] for post in Post.query.all()]
-	print (locs)
-	#return {'success': 1, 'id': u.id, 'msg': 'success'}
-
-#get_locs()
 
 def create_post(user_id, lat, lon, body):
 	p = Post(user_id, lat, lon, body)
@@ -22,8 +14,16 @@ def create_post(user_id, lat, lon, body):
 	return {'success': 1, 'id': p.id, 'msg': 'success'}
 
 def displayPosts():
-    for post in db_session.query(Post.id):
-        print(Post.id)
+	json = []
+	for post in db_session.query(Post.id, Post.user_id, Post.body, Post.pub_date):
+		json.append({'id' : post.id, 'user_id' : post.user_id, 'body' : post.body, 'pub_date' : post.pub_date})
+	return {'success': 1, 'locs':json , 'msg': 'success'}
+		
+def get_locs():
+	json = []
+	for post in db_session.query(Post.id, Post.artist_name, Post.lat, Post.lon):
+		json.append({'id': post.id, 'artist_name': post.artist_name, 'loc':{'lat': post.lat, 'lon': post.lon}})
+	return {'success': 1, 'locs':json , 'msg': 'success'}
 
-#print(create_post(788, 107.87, 376.9789785, ' the body'))
-#displayPosts()
+
+#print(create_post(1, 1000, 100, "dsf"))
